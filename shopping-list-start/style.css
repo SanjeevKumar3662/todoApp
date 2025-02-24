@@ -5,15 +5,14 @@
   /* border: 1px solid; */
 }
 
-:root{
-  --mainBtns: #E15D44;
+:root {
+  --mainBtns: #e15d44;
 }
 
 body {
   text-decoration: none;
   height: 90dvh;
-  background-color: rgba(167, 145, 145, 0.368); 
-  
+  background-color: rgba(167, 145, 145, 0.368);
 }
 
 .container {
@@ -23,7 +22,7 @@ body {
   background-color: #1231a16b;
   border-radius: 10px;
   box-shadow: 5px 5px 10px rgba(6, 0, 0, 0.546);
-  
+
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -85,10 +84,13 @@ li {
 .container ul li {
   width: 200px;
   margin: 10px;
-  padding: 1rem 10px;
+  padding: 1rem 15px;
   /* border: 1px solid black; */
   border-radius: 10px;
   background-color: whitesmoke;
+
+  display: flex;
+  justify-content: space-between;
 }
 
 .container ul li button {
