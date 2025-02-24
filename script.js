@@ -1,3 +1,6 @@
-const addBtn = document.querySelector('#addBtn');
+const addBtn = document.querySelector("#addBtn");
 
-addBtn.addEventListener("click", () => alert("js working"));
+addBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  alert("js working");
+});
