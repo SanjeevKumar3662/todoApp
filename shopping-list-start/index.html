@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="script.js" defer></script>
+    <title>MyTodoApp</title>
+  </head>
+  <body>
+    <!-- container start -->
+    <div class="container">
+      <header class="header">
+        <img src="images/note.png" alt="note pad img" title="notePng" />
+        <h1>Sanjeev's Todo</h1>
+      </header>
+
+      <!-- main input area -->
+      <form class="input-form">
+        <div>
+          <input type="text" placeholder="Enter Item" />
+        </div>
+
+        <div>
+          <button id="addBtn"><i class="fa fa-plus"></i>Add Item</button>
+        </div>
+        
+      </form>
+
+      <!-- filter item area-->
+      <div class="filter">
+        <input type="text" placeholder="Filter Items" />
+      </div>
+
+      <!-- list items are added here -->
+       <h2>Items : <i class="fa fa-arrow-down"></i></h2>
+      <ul class="list">
+        <li>
+          item
+          <button><i class="fa fa-x"></i></button>
+        </li>
+
+        <li>
+          item
+          <button><i class="fa fa-x"></i></button>
+        </li>
+      </ul>
+      <button class="clear-btn">Clear All</button>
+    </div>
+  </body>
+</html>
