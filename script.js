@@ -1,4 +1,3 @@
-alert("new Start");
 const addBtn = document.querySelector("#addBtn");
 
 //creates list item for DOM
@@ -39,3 +38,5 @@ const addElementToDOM = (e) => {
 };
 
 addBtn.addEventListener("click", addElementToDOM);
+
+alert("new Start");
