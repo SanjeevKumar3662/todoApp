@@ -39,4 +39,4 @@ const addElementToDOM = (e) => {
 
 addBtn.addEventListener("click", addElementToDOM);
 
-alert("new Start");
+alert("reloaded / load");
