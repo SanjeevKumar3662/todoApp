@@ -25,13 +25,12 @@
       <!-- main input area -->
       <form class="input-form">
         <div>
-          <input type="text" placeholder="Enter Item" />
+          <input id="mainInput" type="text" placeholder="Enter Item" />
         </div>
 
         <div>
           <button id="addBtn"><i class="fa fa-plus"></i>Add Item</button>
         </div>
-        
       </form>
 
       <!-- filter item area-->
@@ -40,9 +39,10 @@
       </div>
 
       <!-- list items are added here -->
-       <h2>Items : <i class="fa fa-arrow-down"></i></h2>
-      <ul class="list">
-        <li>
+      <h2>Items : <i class="fa fa-arrow-down"></i></h2>
+
+      <ul class="list" id="list">
+        <li class="list-item">
           item
           <button><i class="fa fa-x"></i></button>
         </li>
