@@ -1,4 +1,6 @@
 const addBtn = document.querySelector("#addBtn");
+const mainList = document.querySelector("#list");
+// const deleteItem = document.querySelector("#list");
 
 //creates list item for DOM
 const createListItem = (inputVal) => {
@@ -37,6 +39,17 @@ const addElementToDOM = (e) => {
   parentUl.appendChild(liItem);
 };
 
+//will delete list-item function
+const deleteItemFromDOM = (e) => {
+  // if the target is an icon inside the ul then the parent's
+  // parent element will be removed and that would be the whole list-item
+
+  if (e.target.tagName === "I") {
+    e.target.parentElement.parentElement.remove();
+  }
+};
+
 addBtn.addEventListener("click", addElementToDOM);
+mainList.addEventListener("click", deleteItemFromDOM);
 
 alert("reloaded / load");
