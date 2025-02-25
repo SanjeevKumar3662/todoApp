@@ -1,6 +1,6 @@
 const addBtn = document.querySelector("#addBtn");
 const mainList = document.querySelector("#list");
-// const deleteItem = document.querySelector("#list");
+const clearAllBtn = document.querySelector("#clear-all-btn");
 
 //creates list item for DOM
 const createListItem = (inputVal) => {
@@ -49,7 +49,26 @@ const deleteItemFromDOM = (e) => {
   }
 };
 
-addBtn.addEventListener("click", addElementToDOM);
-mainList.addEventListener("click", deleteItemFromDOM);
+//ClearAll Function
+const clearAllItemsFromDOM = () => {
+  //this will return a nodeList
+  const itemsToBeDeleted = document.querySelectorAll("li");
 
-alert("reloaded / load");
+  //validation - if node list empty then warn the user and return
+  if (itemsToBeDeleted.length === 0) {
+    alert("List toh kahli hai, kya delete karu ? pura github :)");
+    return;
+  }
+  alert(
+    "This will delete all list items, to proceed click OK or refresh the page to abort the operation."
+  );
+
+  itemsToBeDeleted.forEach((item) => item.remove());
+};
+
+//event Listeners
+addBtn.addEventListener("click", addElementToDOM); // for add function
+mainList.addEventListener("click", deleteItemFromDOM); // for delete function
+clearAllBtn.addEventListener("click", clearAllItemsFromDOM); //for clear all button
+
+alert(`Welcome :)`);
