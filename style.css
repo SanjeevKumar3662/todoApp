@@ -7,6 +7,8 @@
 
 :root {
   --mainBtns: #e15d44;
+  --nicePurple: rgba(83, 41, 120, 0.32);
+  --borderRadius: 10px;
 }
 
 body {
@@ -20,7 +22,7 @@ body {
   margin: 2rem auto;
   padding: 1rem 10px;
   background-color: #1231a16b;
-  border-radius: 10px;
+  border-radius: var(--borderRadius);
   box-shadow: 5px 5px 10px rgba(6, 0, 0, 0.546);
 
   display: flex;
@@ -43,13 +45,15 @@ body {
 
 /* main input area */
 .input-form {
+  background-color: var(--nicePurple);
   padding: 10px;
+  border-radius: var(--borderRadius);
 }
 
 .input-form input {
   width: 100%;
   padding: 0.6rem;
-  border-radius: 5px;
+  border-radius: var(--borderRadius);
   border: 1px solid black;
   border: none;
 }
@@ -58,17 +62,27 @@ body {
   padding: 0.6rem;
   width: 130px;
   margin-top: 10px;
-  border-radius: 5px;
+  border-radius: var(--borderRadius);
   border: 1px solid black;
   border: none;
   background-color: var(--mainBtns);
 }
 
 /* filter */
+.list-h2 {
+  text-align: center;
+}
+
+.filter {
+  padding: 10px;
+  background-color: var(--nicePurple);
+  border-radius: var(--borderRadius);
+}
+
 .filter input {
   border: none;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: var(--borderRadius);
   width: 100%;
 }
 
@@ -87,7 +101,7 @@ li {
   margin: 10px;
   padding: 1rem 15px;
   /* border: 1px solid black; */
-  border-radius: 10px;
+  border-radius: var(--borderRadius);
   background-color: whitesmoke;
 
   display: flex;
@@ -100,9 +114,16 @@ li {
 }
 
 /* clear button*/
+.clearBtnBkg {
+  padding: 10px;
+  border-radius: var(--borderRadius);
+  background-color: var(--nicePurple);
+}
+
 .clear-btn {
   padding: 0.8rem;
+  width: 100%;
   border: none;
-  border-radius: 10px;
+  border-radius: var(--borderRadius);
   background-color: var(--mainBtns);
 }
