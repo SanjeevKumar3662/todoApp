@@ -29,7 +29,12 @@ const addElementToDOM = (e) => {
 
   //getting the value form the input form
   const inputValue = document.querySelector("#mainInput").value;
-  // console.log(inputValue);
+
+  //validation - if the input value is an empty string then warn and return
+  if (inputValue === "") {
+    alert("kya add karu ? kuch input toh daalo bhai.");
+    return;
+  }
 
   //calling the creatListItem function this will create the list item
   const liItem = createListItem(inputValue);
