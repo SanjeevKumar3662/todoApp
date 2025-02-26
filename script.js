@@ -46,6 +46,8 @@ const addElementToDOM = (e) => {
 
   let form = document.querySelector("#form");
   form.reset();
+
+  changeEmojiToSmile();
 };
 
 //will delete list-item function
@@ -56,6 +58,8 @@ const deleteItemFromDOM = (e) => {
   if (e.target.tagName === "I") {
     e.target.parentElement.parentElement.remove();
   }
+
+  changeEmojiToSmile();
 };
 
 //ClearAll Function
@@ -73,6 +77,7 @@ const clearAllItemsFromDOM = () => {
   );
 
   itemsToBeDeleted.forEach((item) => item.remove());
+  changeEmojiToSmile();
 };
 
 //filter function
@@ -90,6 +95,30 @@ const filterListItems = (e) => {
       item.style.display = "none";
     }
   });
+};
+
+//list goes changes status to happy or sad depending on if the list
+//is empty or not
+const changeEmojiToSmile = () => {
+  const num = document.querySelectorAll("li").length;
+  const h2 = document.querySelector("h2");
+
+  if (num > 0) {
+    const icon = document.createElement("i");
+    icon.classList.add("far");
+    icon.classList.add("fa-smile-beam");
+    document.querySelector(".fa-frown").replaceWith(icon);
+
+    //change the h2 text
+    h2.firstChild.replaceWith(document.createTextNode("Your list is Happy : "));
+  } else {
+    const icon = document.createElement("i");
+    icon.classList.add("far");
+    icon.classList.add("fa-frown");
+    document.querySelector(".fa-smile-beam").replaceWith(icon);
+
+    h2.firstChild.replaceWith(document.createTextNode("Your list is Empty : "));
+  }
 };
 
 //event Listeners
