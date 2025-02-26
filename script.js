@@ -26,7 +26,7 @@ const createListItem = (inputVal) => {
 
 const addElementToDOM = (e) => {
   //this will prevent the form from submitting
-  // e.preventDefault();
+  e.preventDefault();
 
   //getting the value form the input form
   const inputValue = document.querySelector("#mainInput").value;
@@ -43,6 +43,9 @@ const addElementToDOM = (e) => {
   //adding list item to the DOM
   const parentUl = document.querySelector("#list");
   parentUl.appendChild(liItem);
+
+  let form = document.querySelector("#form");
+  form.reset();
 };
 
 //will delete list-item function
