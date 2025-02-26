@@ -1,6 +1,7 @@
 const addBtn = document.querySelector("#addBtn");
 const mainList = document.querySelector("#list");
 const clearAllBtn = document.querySelector("#clear-all-btn");
+const filterInput = document.querySelector("#filter-input");
 
 //creates list item for DOM
 const createListItem = (inputVal) => {
@@ -71,9 +72,27 @@ const clearAllItemsFromDOM = () => {
   itemsToBeDeleted.forEach((item) => item.remove());
 };
 
+//filter function
+const filterListItems = (e) => {
+  const inputVal = e.currentTarget.value;
+  const listItems = document.querySelectorAll("li");
+
+  listItems.forEach((item) => {
+    //if the item include the input string then set it to flex else to none
+    if (item.firstChild.wholeText.includes(inputVal)) {
+      // console.log("true");
+      item.style.display = "flex";
+    } else {
+      // console.log("false");
+      item.style.display = "none";
+    }
+  });
+};
+
 //event Listeners
 addBtn.addEventListener("click", addElementToDOM); // for add function
 mainList.addEventListener("click", deleteItemFromDOM); // for delete function
 clearAllBtn.addEventListener("click", clearAllItemsFromDOM); //for clear all button
+filterInput.addEventListener("input", filterListItems); // for filtering the list items
 
-alert(`Welcome :)`);
+window.addEventListener("DOMContentLoaded", alert("Wellcome :)"));
