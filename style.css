@@ -18,7 +18,7 @@ body {
 }
 
 .container {
-  width: 500px;
+  max-width: 500px;
   margin: 2rem auto;
   padding: 1rem 10px;
   background-color: #1231a16b;
@@ -96,8 +96,8 @@ li {
   flex-wrap: wrap;
 }
 
-.container ul li {
-  width: 200px;
+.container li {
+  min-width: 220px;
   margin: 10px;
   padding: 1rem 15px;
   /* border: 1px solid black; */
@@ -126,4 +126,20 @@ li {
   border: none;
   border-radius: var(--borderRadius);
   background-color: var(--mainBtns);
+}
+
+@media (max-width: 660px) {
+  .container {
+    margin: 20px 10px;
+  }
+  .container ul {
+    display: flex;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
+  }
+
+  /*makes the lis take 100% of the space available*/
+  .container ul .list-item {
+    max-width: 100%;
+  }
 }
