@@ -68,17 +68,15 @@ const deleteItemFromDOM = (e) => {
 
   //delete from storage
   const inputVal = e.target.parentElement.parentElement.firstChild.wholeText;
-  console.log(`item - > ${inputVal}`);
   const delThisIndex = storedList.indexOf(inputVal);
-  console.log(`in array -> ${delThisIndex}`);
 
   console.log(
-    `index returned ${delThisIndex}, value is ${storedList[delThisIndex]}`
+    `Delete index ${delThisIndex} item was ${storedList[delThisIndex]}`
   );
 
   storedList.splice(delThisIndex, 1);
   localStorage.setItem("list", JSON.stringify(storedList));
-  console.log(`arr, after deleting - > [${getArrFromStorage()}]`);
+  console.log(getArrFromStorage());
 
   changeEmojiToSmile();
 };
@@ -98,6 +96,10 @@ const clearAllItemsFromDOM = () => {
   );
 
   itemsToBeDeleted.forEach((item) => item.remove());
+
+  localStorage.setItem("list", JSON.stringify([]));
+  console.log(getArrFromStorage());
+
   changeEmojiToSmile();
 };
 
@@ -150,7 +152,7 @@ const changeEmojiToSmile = () => {
 const getArrFromStorage = () => {
   if (localStorage.getItem("list") === null) {
     console.log("not items found in storage");
-    return;
+    return [];
   } else {
     const storedList = JSON.parse(localStorage.getItem("list"));
     return storedList;
@@ -161,11 +163,13 @@ const getArrFromStorage = () => {
 //reset UI
 const resetUI = () => {
   const storedList = getArrFromStorage();
-  if (storedList.length === 0 || storedList === null) {
+
+  if (storedList.length === 0) {
     console.log("no pre-existing items in storage");
     return;
   }
-
+  console.log(`pre-existing items in storage -> [${getArrFromStorage()}]`);
+  //adding elements to dom based on list from storage
   storedList.forEach((item) => {
     //getting the value form the input form
     const inputValue = item;
@@ -191,8 +195,3 @@ filterInput.addEventListener("input", filterListItems); // for filtering the lis
 
 window.addEventListener("DOMContentLoaded", alert("Wellcome :)"));
 window.addEventListener("DOMContentLoaded", resetUI);
-
-// //dummy list for testing
-// const storinglist = [2, 5, 6];
-// localStorage.setItem("list", JSON.stringify(storinglist));
-console.log(getArrFromStorage());
