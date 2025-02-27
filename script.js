@@ -47,17 +47,38 @@ const addElementToDOM = (e) => {
   let form = document.querySelector("#form");
   form.reset();
 
+  //add input to storage
+  const arr = getArrFromStorage();
+  arr.push(inputValue);
+  localStorage.setItem("list", JSON.stringify(arr));
+  console.log(getArrFromStorage());
+
   changeEmojiToSmile();
 };
 
-//will delete list-item function
+//will delete list-item from dom
 const deleteItemFromDOM = (e) => {
+  const storedList = getArrFromStorage();
   // if the target is an icon inside the ul then the parent's
   // parent element will be removed and that would be the whole list-item
 
   if (e.target.tagName === "I") {
     e.target.parentElement.parentElement.remove();
   }
+
+  //delete from storage
+  const inputVal = e.target.parentElement.parentElement.firstChild.wholeText;
+  console.log(`item - > ${inputVal}`);
+  const delThisIndex = storedList.indexOf(inputVal);
+  console.log(`in array -> ${delThisIndex}`);
+
+  console.log(
+    `index returned ${delThisIndex}, value is ${storedList[delThisIndex]}`
+  );
+
+  storedList.splice(delThisIndex, 1);
+  localStorage.setItem("list", JSON.stringify(storedList));
+  console.log(`arr, after deleting - > [${getArrFromStorage()}]`);
 
   changeEmojiToSmile();
 };
@@ -107,7 +128,8 @@ const changeEmojiToSmile = () => {
     const icon = document.createElement("i");
     icon.classList.add("far");
     icon.classList.add("fa-smile-beam");
-    document.querySelector(".fa-frown").replaceWith(icon);
+    icon.id = "emoji";
+    document.querySelector("#emoji").replaceWith(icon);
 
     //change the h2 text
     h2.firstChild.replaceWith(document.createTextNode("Your list is Happy : "));
@@ -115,10 +137,50 @@ const changeEmojiToSmile = () => {
     const icon = document.createElement("i");
     icon.classList.add("far");
     icon.classList.add("fa-frown");
-    document.querySelector(".fa-smile-beam").replaceWith(icon);
+    icon.id = "emoji";
+    document.querySelector("#emoji").replaceWith(icon);
 
     h2.firstChild.replaceWith(document.createTextNode("Your list is Empty : "));
   }
+};
+
+//x------------LocalStorage-----------x
+
+//this will fetch items from local Storage
+const getArrFromStorage = () => {
+  if (localStorage.getItem("list") === null) {
+    console.log("not items found in storage");
+    return;
+  } else {
+    const storedList = JSON.parse(localStorage.getItem("list"));
+    return storedList;
+  }
+};
+//x------------LocalStorage-----------x
+
+//reset UI
+const resetUI = () => {
+  const storedList = getArrFromStorage();
+  if (storedList.length === 0 || storedList === null) {
+    console.log("no pre-existing items in storage");
+    return;
+  }
+
+  storedList.forEach((item) => {
+    //getting the value form the input form
+    const inputValue = item;
+
+    //calling the creatListItem function this will create the list item
+    const liItem = createListItem(inputValue);
+
+    //adding list item to the DOM
+    const parentUl = document.querySelector("#list");
+    parentUl.appendChild(liItem);
+
+    let form = document.querySelector("#form");
+    form.reset();
+  });
+  changeEmojiToSmile();
 };
 
 //event Listeners
@@ -128,3 +190,9 @@ clearAllBtn.addEventListener("click", clearAllItemsFromDOM); //for clear all but
 filterInput.addEventListener("input", filterListItems); // for filtering the list items
 
 window.addEventListener("DOMContentLoaded", alert("Wellcome :)"));
+window.addEventListener("DOMContentLoaded", resetUI);
+
+// //dummy list for testing
+// const storinglist = [2, 5, 6];
+// localStorage.setItem("list", JSON.stringify(storinglist));
+console.log(getArrFromStorage());
