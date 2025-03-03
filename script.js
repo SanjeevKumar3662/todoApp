@@ -193,5 +193,5 @@ mainList.addEventListener("click", deleteItemFromDOM); // for delete function
 clearAllBtn.addEventListener("click", clearAllItemsFromDOM); //for clear all button
 filterInput.addEventListener("input", filterListItems); // for filtering the list items
 
-window.addEventListener("DOMContentLoaded", alert("Wellcome :)"));
+window.addEventListener("DOMContentLoaded", () => console.log("DOM Loaded"));
 window.addEventListener("DOMContentLoaded", resetUI);
